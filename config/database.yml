@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password: root
+  host: localhost
+
+development:
+  <<: *default
+  database: hotwire_forums_development
+
+test:
+  <<: *default
+  database: hotwire_forums_test
+
+production:
+  <<: *default
+  database: hotwire_forums_production
+  username: hotwire_forums
+  password: <%= ENV["EXCHANGE7_DATABASE_PASSWORD"] %>
